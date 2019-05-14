@@ -3,6 +3,7 @@ package com.bennett.javapractice.springguru.spring5webapp.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Author {
 	private String firstName;
 	private String lastName;
 	
-	@ManyToMany(mappedBy = "authors")
+	@ManyToMany(mappedBy = "authors", cascade = CascadeType.ALL)
 	private Set<Book> books = new HashSet<>();
 	
 	public Author() {
@@ -98,8 +99,5 @@ public class Author {
 				", firstName=" + firstName + 
 				", lastName=" + lastName + 
 				", books=" + books + "]";
-	}
-	
-	
-	
+	}	
 }
