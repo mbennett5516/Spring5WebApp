@@ -3,25 +3,21 @@ package com.bennett.javapractice.springguru.spring5webapp.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Publisher {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column
 	private String name;
 	
-	@Column
 	private String address;
-	
-	private Set<Publisher> publishers = new HashSet<>();
 	
 	public Publisher() {
 		
@@ -34,14 +30,6 @@ public class Publisher {
 
 	public Long getId() {
 		return id;
-	}
-
-	public Set<Publisher> getPublishers() {
-		return publishers;
-	}
-
-	public void setPublishers(Set<Publisher> publishers) {
-		this.publishers = publishers;
 	}
 
 	public void setId(Long id) {
